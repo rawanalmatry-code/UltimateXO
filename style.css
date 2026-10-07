@@ -1,0 +1,484 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family: Arial, sans-serif;
+
+    background: #f4f1ea;
+
+    color: #1d1d1d;
+}
+
+
+/* =================================
+   الشاشات
+================================= */
+
+.screen {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* =================================
+   الصفحة الرئيسية
+================================= */
+
+#home-screen {
+    padding: 30px 20px;
+}
+
+
+/* الشعار */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    font-size: 25px;
+    font-weight: bold;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 20px;
+}
+
+.logo span:first-child {
+    font-size: 38px;
+}
+
+.logo span:last-child {
+    font-size: 38px;
+}
+
+
+/* العنوان */
+
+#home-screen h1 {
+    font-size: 55px;
+
+    margin: 0;
+
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    margin-top: 10px;
+    margin-bottom: 45px;
+
+    color: #777;
+
+    font-size: 18px;
+}
+
+
+/* أزرار القائمة */
+
+.menu-buttons {
+    width: min(90vw, 430px);
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+
+.menu-btn {
+    width: 100%;
+
+    min-height: 105px;
+
+    border: 2px solid #222;
+
+    border-radius: 18px;
+
+    background: white;
+
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.2s;
+}
+
+
+.menu-btn:hover {
+    transform: translateY(-3px);
+
+    background: #222;
+
+    color: white;
+}
+
+
+.menu-btn span:not(.icon) {
+    font-size: 23px;
+    font-weight: bold;
+}
+
+
+.menu-btn .icon {
+    font-size: 28px;
+
+    margin-bottom: 5px;
+}
+
+
+.menu-btn small {
+    margin-top: 5px;
+
+    color: #888;
+
+    font-size: 14px;
+}
+
+
+.menu-btn:hover small {
+    color: #ddd;
+}
+
+
+/* =================================
+   شاشة اللعبة
+================================= */
+
+.game-screen {
+    padding: 25px 15px;
+}
+
+
+.game-screen h1 {
+    margin: 0 0 18px;
+
+    font-size: 38px;
+}
+
+
+.info {
+    text-align: center;
+
+    margin-bottom: 20px;
+}
+
+
+#turn {
+    font-size: 23px;
+
+    font-weight: bold;
+
+    margin-bottom: 7px;
+}
+
+
+#message {
+    font-size: 15px;
+
+    color: #666;
+}
+
+
+/* =================================
+   اللوحة الكبيرة
+================================= */
+
+.game-board {
+    width: min(90vw, 650px);
+
+    aspect-ratio: 1 / 1;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+
+    gap: 7px;
+
+    background: #111;
+
+    padding: 7px;
+}
+
+
+/* =================================
+   اللوحات الصغيرة
+================================= */
+
+.small-board {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+
+    gap: 2px;
+
+    background: #111;
+
+    padding: 2px;
+
+    transition: 0.2s;
+}
+
+
+/* اللوحة المطلوبة */
+
+.small-board.active {
+    box-shadow:
+        inset 0 0 0 5px #e7b900;
+}
+
+
+/* الخانات */
+
+.cell {
+    border: none;
+
+    background: white;
+
+    font-size: clamp(22px, 6vw, 45px);
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.cell:hover:not(:disabled) {
+    background: #eeeeee;
+}
+
+
+.cell:disabled {
+    cursor: default;
+}
+
+
+/* =================================
+   الفوز باللوحة الصغيرة
+================================= */
+
+.small-board.won-x::after {
+
+    content: "X";
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.90);
+
+    font-size: 100px;
+
+    font-weight: bold;
+
+    pointer-events: none;
+}
+
+
+.small-board.won-o::after {
+
+    content: "O";
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.90);
+
+    font-size: 100px;
+
+    font-weight: bold;
+
+    pointer-events: none;
+}
+
+
+.small-board.draw::after {
+
+    content: "—";
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.90);
+
+    font-size: 70px;
+
+    pointer-events: none;
+}
+
+
+/* =================================
+   أزرار اللعبة
+================================= */
+
+.game-buttons {
+
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 22px;
+}
+
+
+.game-buttons button {
+
+    padding: 11px 20px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: #222;
+
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+
+.game-buttons button:hover {
+    background: #444;
+}
+
+
+/* =================================
+   الجوال
+================================= */
+
+@media (max-width: 600px) {
+
+    #home-screen h1 {
+        font-size: 42px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .logo span:first-child,
+    .logo span:last-child {
+        font-size: 30px;
+    }
+
+    .game-board {
+        gap: 4px;
+
+        padding: 4px;
+    }
+
+    .small-board {
+        gap: 1px;
+
+        padding: 1px;
+    }
+
+    .small-board.won-x::after,
+    .small-board.won-o::after {
+        font-size: 55px;
+    }
+
+    .small-board.draw::after {
+        font-size: 45px;
+    }
+
+    .game-buttons {
+        flex-direction: column;
+
+        width: 90%;
+    }
+}
+.room-code-box {
+    background: white;
+    border: 2px solid #222;
+    border-radius: 18px;
+    padding: 25px;
+    text-align: center;
+    width: min(90vw, 400px);
+    margin: 20px 0;
+}
+
+.room-code-box p {
+    margin: 0 0 10px;
+    color: #777;
+}
+
+#room-code {
+    display: block;
+    font-size: 42px;
+    letter-spacing: 8px;
+    margin-bottom: 20px;
+}
+
+.room-code-box button,
+.join-room-box button,
+#room-back-button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    background: #222;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.join-room-box {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: min(90vw, 350px);
+    margin: 20px 0;
+}
+
+#room-code-input {
+    padding: 15px;
+    border: 2px solid #222;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 24px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+#room-back-button {
+    margin-top: 10px;
+}

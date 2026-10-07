@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ultimate XO</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- الصفحة الرئيسية -->
+    <div id="home-screen" class="screen">
+
+        <div class="logo">
+            <span>✕</span>
+            <span>ULTIMATE</span>
+            <span>○</span>
+        </div>
+
+        <h1>Ultimate XO</h1>
+
+        <p class="subtitle">
+            The Ultimate Tic-Tac-Toe
+        </p>
+
+        <div class="menu-buttons">
+
+            <button id="two-player-btn" class="menu-btn">
+                <span class="icon">👥</span>
+                <span>لاعبين</span>
+                <small>Player vs Player</small>
+            </button>
+
+            <button id="ai-btn" class="menu-btn">
+                <span class="icon">🤖</span>
+                <span>اللعب ضد AI</span>
+                <small>Player vs AI</small>
+            </button>
+            <button id="create-room-btn" class="menu-btn">
+                <span class="icon">🌐</span>
+                <span>إنشاء غرفة</span>
+                <small>Create Room</small>
+            </button>
+
+            <button id="enter-room-btn" class="menu-btn">
+                <span class="icon">🔑</span>
+                <span>دخول غرفة</span>
+                <small>Enter Room</small>
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- شاشة الغرفة -->
+    <div id="room-screen" class="screen hidden">
+
+        <h1 id="room-title">Ultimate XO</h1>
+
+        <p id="room-message">
+          جاري تجهيز الغرفة...
+        </p>
+
+ <div id="room-code-box" class="room-code-box hidden">
+        <p>كود الغرفة:</p>
+        <strong id="room-code"></strong>
+        <button id="copy-room-code">
+            📋 نسخ الكود
+        </button>
+    </div>
+
+    <div id="join-room-box" class="join-room-box hidden">
+
+        <input
+            id="room-code-input"
+            type="text"
+            maxlength="5"
+            placeholder="أدخل الكود"
+            autocomplete="off"
+        >
+
+        <button id="join-room-button">
+            دخول الغرفة
+        </button>
+
+    </div>
+
+    <button id="room-back-button">
+        رجوع
+    </button>
+
+    </div>
+    <!-- شاشة اللعبة -->
+    <div id="game-screen" class="screen game-screen hidden">
+
+        <h1>Ultimate XO</h1>
+
+        <div class="info">
+
+            <div id="turn">
+                دور اللاعب: X
+            </div>
+
+            <div id="message">
+                اختاري أي لوحة للبدء
+            </div>
+
+        </div>
+
+        <div id="game-board" class="game-board"></div>
+
+        <div class="game-buttons">
+
+            <button id="restart">
+                🔄 إعادة اللعبة
+            </button>
+
+            <button id="home-btn">
+                🏠 الرئيسية
+            </button>
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
