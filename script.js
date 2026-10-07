@@ -62,7 +62,7 @@ const winningLines = [
     [0, 3, 6],
     [1, 4, 7],
     [2, 5, 8],
-    [0, 4, 7],
+    [0, 4, 8],
     [2, 4, 6]
 ];
 
@@ -1444,7 +1444,14 @@ copyRoomCodeButton.addEventListener(
 
 roomBackButton.addEventListener(
     "click",
-    leaveRoom
+    function () {
+
+        leaveRoom();
+
+        roomScreen.classList.add("hidden");
+
+        homeScreen.classList.remove("hidden");
+    }
 );
 
 
